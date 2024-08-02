@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Optimization Result</title>
+</head>
+<body>
+    <h1>Optimization Result</h1>
+    <p>Total time to load cargo onto planes: {{ total_time }} minutes</p>
+    <h2>Optimized routes for each car:</h2>
+    <ul>
+    {% for trip in trips %}
+        <li>Car {{ trip.car }} route: {{ trip.route }} with {{ trip.cargo_amount }} tons</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
