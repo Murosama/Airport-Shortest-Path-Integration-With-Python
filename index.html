@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargo Optimization</title>
+</head>
+<body>
+    <h1>Cargo Optimization Input</h1>
+    <form action="/optimize" method="post">
+        <label for="num_places">Number of Cargo Places:</label>
+        <input type="number" id="num_places" name="num_places" required><br><br>
+        
+        <label for="car_capacity">Car Capacity (tons):</label>
+        <input type="number" id="car_capacity" name="car_capacity" required><br><br>
+
+        <label for="num_cars">Number of Cars:</label>
+        <input type="number" id="num_cars" name="num_cars" required><br><br>
+
+        <label for="plane_location">Plane Location (x,y):</label>
+        <input type="text" id="plane_location" name="plane_location" required><br><br>
+
+        <div id="cargo_places">
+            <!-- Cargo places inputs will be added here dynamically -->
+        </div>
+
+        <button type="button" onclick="addCargoPlace()">Add Cargo Place</button><br><br>
+
+        <input type="submit" value="Optimize">
+    </form>
+
+    <script>
+        let placeCount = 0;
+
+        function addCargoPlace() {
+            placeCount++;
+            const container = document.getElementById('cargo_places');
+            const html = `
+                <div>
+                    <label for="place${placeCount}">Place ${placeCount} Name:</label>
+                    <input type="text" id="place${placeCount}" name="place${placeCount}" required><br><br>
+
+                    <label for="coords${placeCount}">Place ${placeCount} Coordinates (x,y):</label>
+                    <input type="text" id="coords${placeCount}" name="coords${placeCount}" required><br><br>
+
+                    <label for="cargo${placeCount}">Cargo at Place ${placeCount} (tons):</label>
+                    <input type="number" id="cargo${placeCount}" name="cargo${placeCount}" required><br><br>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+        }
+    </script>
+</body>
+</html>
